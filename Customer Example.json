@@ -1,0 +1,26 @@
+[
+    {
+       "IDcustomer":"COCACOLA",
+       "CompanyName":"Coca Cola Company",
+       "Address":"1 Coca Cola Plz NW",
+       "State":"Georgia",
+       "Country":"USA",
+       "SubscriptionState":1
+    },
+    {
+       "IDcustomer":"MONGO",
+       "CompanyName":"MongoDB",
+       "Address":"Piedmont Road NE Suite 110",
+       "State":"Texas",
+       "Country":"USA",
+       "SubscriptionState":2
+    },
+    {
+       "IDcustomer":"LINK",
+       "CompanyName":"LINK Mobility",
+       "Address":"Universitetsgata 2 0164",
+       "State":"Oslo",
+       "Country":"Norway",
+       "SubscriptionState":3
+    }
+ ]
