@@ -1,0 +1,51 @@
+<h1>Customers</h1>
+<div *ngIf="data">
+  <table mat-table [dataSource]="data" class="mat-elevation-z8 demo-table">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="iDcustomer">
+      <th mat-header-cell *matHeaderCellDef>Customer ID</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.iDcustomer }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="companyName">
+      <th mat-header-cell *matHeaderCellDef>Company Name</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.companyName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Address</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.address }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef>State</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.state }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef>Country</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.country }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="subscriptionState">
+      <th mat-header-cell *matHeaderCellDef>Subscription State</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.subscriptionState }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="numberOfInvoices">
+      <th mat-header-cell *matHeaderCellDef>Number of Invoices</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.numberOfInvoices }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="redirectToAnotherPage(row)"></tr>
+  </table>
+</div>
+<br>
+<div class="col-sm-1">
+  <button mat-raised-button color="primary" (click)="AddCustomer()">ADD NEW</button>
+</div>
