@@ -27,9 +27,4 @@ export class ApiService {
   insertCustomer(customer: Customer) {
     return this.http.post<Customer>(`${this.apiUrl}/CustomerService/Insert`,customer);
   }
-
-
-  getInvoicesByCustomer(iDcustomer: string): Observable<Invoice[]> {
-    return this.http.get<Invoice[]>(`${this.apiUrl}/InvoiceService/GetAllByCustomer?IDcustomer=${iDcustomer}`);
-  }
 }

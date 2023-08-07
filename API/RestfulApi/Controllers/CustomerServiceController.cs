@@ -62,11 +62,11 @@ public sealed class CustomerServiceController : ControllerBase
         }
     }
     [HttpDelete("[action]")]
-    public IActionResult Delete(string id)
+    public IActionResult Delete(string ID)
     {
         try
         {
-            return Ok(_customerService.DeleteCustomer(id));
+            return Ok(_customerService.DeleteCustomer(ID));
         }
         catch (Exception ex)
         {

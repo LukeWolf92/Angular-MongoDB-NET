@@ -31,7 +31,6 @@ public class Startup
 
         services.AddSingleton<MongoDBContext>();
         services.AddScoped<ICustomer, CustomerService>();
-        services.AddScoped<IInvoice, InvoiceService>();
 
         // Register the Swagger generator
         services.AddSwaggerGen(c =>

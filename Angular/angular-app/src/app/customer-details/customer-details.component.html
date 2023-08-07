@@ -3,14 +3,6 @@
 
 <form *ngIf="customerForm" [formGroup]="customerForm">
     <div class="row">
-        <div class="col-2">
-            <mat-form-field>
-                <mat-label>IDcustomer</mat-label>
-                <input matInput formControlName="iDcustomer">
-            </mat-form-field>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-6">
             <mat-form-field>
                 <mat-label>Company Name</mat-label>
@@ -54,7 +46,7 @@
         <div class="col-sm-2">
             <mat-form-field>
                 <mat-label>Number Of Invoices</mat-label>
-                <input matInput formControlName="numberOfInvoices" [readonly]="true">
+                <input matInput [value]="invoices.length" [readonly]="true">
             </mat-form-field>
         </div>
     </div>
@@ -77,16 +69,6 @@
 <div *ngIf="invoices.length > 0" class="col-sm-8">
     <h3>Invoices</h3>
     <table mat-table [dataSource]="invoices" class="mat-elevation-z8 demo-table">
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef>ID</th>
-            <td mat-cell *matCellDef="let invoice">{{ invoice.id }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="iDcustomer">
-            <th mat-header-cell *matHeaderCellDef>Customer ID</th>
-            <td mat-cell *matCellDef="let invoice">{{ invoice.iDcustomer }}</td>
-        </ng-container>
-
         <ng-container matColumnDef="invoiceNumber">
             <th mat-header-cell *matHeaderCellDef>Invoice Number</th>
             <td mat-cell *matCellDef="let invoice">{{ invoice.invoiceNumber }}</td>

@@ -8,9 +8,9 @@ public interface ICustomer
 {
     #region Customers
     List<Customer> GetCustomers();
-    Customer GetCustomer(string IDcustomer = "");
+    Customer GetCustomer(string ID = "");
     void SaveCustomer(Customer customer);
-    DeleteResult DeleteCustomer(string id);
+    DeleteResult DeleteCustomer(string ID);
     #endregion
 }
 public sealed class CustomerService : ICustomer
@@ -29,5 +29,5 @@ public sealed class CustomerService : ICustomer
         else
             _mongoContext.Customers.ReplaceOne(x => x.Id == customer.Id,customer);
     }
-    public DeleteResult DeleteCustomer(string id) => _mongoContext.Customers.DeleteOne(x => x.Id == id);
+    public DeleteResult DeleteCustomer(string ID) => _mongoContext.Customers.DeleteOne(x => x.Id == ID);
 }

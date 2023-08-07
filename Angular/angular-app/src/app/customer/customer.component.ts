@@ -13,13 +13,12 @@ export class CustomerComponent implements OnInit {
 
   displayedColumns: string[] = [
     'id',
-    'iDcustomer',
     'companyName',
     'address',
     'state',
     'country',
     'subscriptionState',
-    'numberOfInvoices',
+    'invoices',
   ];
   constructor(private apiService: ApiService, private router: Router) {}
 

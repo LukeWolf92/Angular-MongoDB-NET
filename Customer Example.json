@@ -1,26 +1,34 @@
 [
     {
-       "IDcustomer":"COCACOLA",
        "CompanyName":"Coca Cola Company",
        "Address":"1 Coca Cola Plz NW",
        "State":"Georgia",
        "Country":"USA",
-       "SubscriptionState":1
+       "SubscriptionState":1,
+       "Invoices":[
+         {
+            "InvoiceNumber":"wa28dih",
+            "Date":"2023-04-10",
+            "Total": 1000
+         },
+         {
+            "InvoiceNumber":"fa287aug",
+            "Date":"2023-07-25",
+            "Total": 5000
+         },
+         {
+            "InvoiceNumber":"jg926aww",
+            "Date":"2023-03-02",
+            "Total": 3000
+         }
+       ]
     },
     {
-       "IDcustomer":"MONGO",
        "CompanyName":"MongoDB",
        "Address":"Piedmont Road NE Suite 110",
        "State":"Texas",
        "Country":"USA",
-       "SubscriptionState":2
-    },
-    {
-       "IDcustomer":"LINK",
-       "CompanyName":"LINK Mobility",
-       "Address":"Universitetsgata 2 0164",
-       "State":"Oslo",
-       "Country":"Norway",
-       "SubscriptionState":3
+       "SubscriptionState":2,
+       "Invoices":[]
     }
  ]

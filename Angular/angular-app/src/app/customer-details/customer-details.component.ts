@@ -29,8 +29,6 @@ export class CustomerDetailsComponent implements OnInit {
   invoices: Invoice[] = [];
 
   displayedColumns: string[] = [
-    'id',
-    'iDcustomer',
     'invoiceNumber',
     'date',
     'total',
@@ -49,35 +47,25 @@ export class CustomerDetailsComponent implements OnInit {
 
     this.customerForm = this.formBuilder.group({
       id: this.formBuilder.control(''),
-      iDcustomer: this.formBuilder.control(''),
       companyName: this.formBuilder.control(''),
       address: this.formBuilder.control(''),
       state: this.formBuilder.control(''),
       country: this.formBuilder.control(''),
       subscriptionState: [this.getSubscriptionStateName(0), [Validators.pattern(/^[012]$/)]],
-      numberOfInvoices: [this.formBuilder.control(0), [Validators.pattern(/^[0-9]+$/)]]
+      invoices: this.formBuilder.control(0),
     });
 
     if (this.Id === '0') {
       this.customerForm.get('subscriptionState')?.setValue(0);
       this.customerForm.get('subscriptionState')?.disable();
-      this.customerForm.get('numberOfInvoices')?.setValue(0);
+      this.customerForm.get('invoices')?.setValue(0);
     } else {
 
       this.apiSubcription = this.apiService.getCustomer(this.Id).subscribe({
         next: (response: Customer) => {
           this.customer = response;
           this.customerForm?.patchValue(response);
-
-          this.apiService.getInvoicesByCustomer(response.iDcustomer).subscribe(
-            (response2: Invoice[]) => {
-              this.invoices = response2;
-              this.customerForm?.get('numberOfInvoices')?.setValue(this.invoices.length);
-            },
-            (error) => {
-              console.error('Error fetching invoices from API:', error);
-            }
-          );
+          this.invoices = response.invoices; 
         },
         error: (error) => {
           console.error('Error fetching customer details from API:', error);
@@ -102,6 +90,7 @@ export class CustomerDetailsComponent implements OnInit {
       const formData = this.customerForm!.value as Customer;
 
       if (this.Id === '0') {
+        formData.invoices = [];
         this.apiService.insertCustomer(formData).subscribe(
           (response: Customer) => {
             this.router.navigate(['/customer']);
