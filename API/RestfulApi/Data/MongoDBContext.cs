@@ -14,7 +14,5 @@ public sealed class MongoDBContext
         _database = client.GetDatabase(databaseName);
     }
 
-    // Define properties for each collection you want to access
     public IMongoCollection<Customer> Customers => _database.GetCollection<Customer>("Customer");
-    public IMongoCollection<Invoice> Invoices => _database.GetCollection<Invoice>("Invoice");
 }
