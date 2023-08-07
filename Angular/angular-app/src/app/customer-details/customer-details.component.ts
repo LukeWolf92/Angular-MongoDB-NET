@@ -43,36 +43,35 @@ export class CustomerDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.Id = params['id'];
-    });
 
-    this.customerForm = this.formBuilder.group({
-      id: this.formBuilder.control(''),
-      companyName: this.formBuilder.control(''),
-      address: this.formBuilder.control(''),
-      state: this.formBuilder.control(''),
-      country: this.formBuilder.control(''),
-      subscriptionState: [this.getSubscriptionStateName(0), [Validators.pattern(/^[012]$/)]],
-      invoices: this.formBuilder.control(0),
-    });
-
-    if (this.Id === '0') {
-      this.customerForm.get('subscriptionState')?.setValue(0);
-      this.customerForm.get('subscriptionState')?.disable();
-      this.customerForm.get('invoices')?.setValue(0);
-    } else {
-
-      this.apiSubcription = this.apiService.getCustomer(this.Id).subscribe({
-        next: (response: Customer) => {
-          this.customer = response;
-          this.customerForm?.patchValue(response);
-          this.invoices = response.invoices; 
-        },
-        error: (error) => {
-          console.error('Error fetching customer details from API:', error);
-        }
+      this.customerForm = this.formBuilder.group({
+        id: this.formBuilder.control(''),
+        companyName: this.formBuilder.control(''),
+        address: this.formBuilder.control(''),
+        state: this.formBuilder.control(''),
+        country: this.formBuilder.control(''),
+        subscriptionState: [this.getSubscriptionStateName(0), [Validators.pattern(/^[012]$/)]],
+        invoices: this.formBuilder.control(0),
       });
-    }
-
+  
+      if (this.Id === '0') {
+        this.customerForm.get('subscriptionState')?.setValue(0);
+        this.customerForm.get('subscriptionState')?.disable();
+        this.customerForm.get('invoices')?.setValue(0);
+      } else {
+  
+        this.apiSubcription = this.apiService.getCustomer(this.Id).subscribe({
+          next: (response: Customer) => {
+            this.customer = response;
+            this.customerForm?.patchValue(response);
+            this.invoices = response.invoices; 
+          },
+          error: (error) => {
+            console.error('Error fetching customer details from API:', error);
+          }
+        });
+      }
+    });
   }
 
   getSubscriptionStateValue(name: string): number {
